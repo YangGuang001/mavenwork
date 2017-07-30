@@ -1,5 +1,8 @@
 # 第一课
 
+快照没有搞定
+
+
 * maven工具包包含很多的插件，例如执行maven clean compile 编译源文件生成到target目录下，clean表示删除原来的文件夹
 clean 是clean插件提供的， compile是compiler提供的。  
 * 在mvn项目有测试的src目录下执行mvn clean test可以执行junit测试，过程会编译test目录下的测试文件，再执行相应的测试用例。  
@@ -76,4 +79,18 @@ clean 是clean插件提供的， compile是compiler提供的。
     </snapshotRepository>
 </distributionManagement>
 ```
-# 生命周期
+# 生命周期和插件
+三个相互独立的生命周期：clean（pre_clean、lean、post_clean）、default（compile...install、deploy）、site(pre_site、site)   
+default为jar包服务，site为war包服务。
+## 内置绑定
+* 插件的目的：maven-dependency-plugin插件有几十个目标：dependency:list(列表),dependency:tree(树),dependency:analyze(分析)，
+maven-compiler-plugin的目的:compiler:compile，maven-surefile-plugin的目的surefile：test
+## 自定义绑定
+
+## 插件仓库 pluginRepositories
+
+# 聚合与继承
+build的子元素testResources 表示开启资源过滤
+name 字段在聚合模块中表示是自己的名称。
+## 继承
+dependencyManagement 即可以让子模块继承父模块的依赖配置，保证子模块的灵活配置，又不让模块引入实际的依赖   
