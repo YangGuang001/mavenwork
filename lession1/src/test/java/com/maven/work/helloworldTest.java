@@ -13,4 +13,8 @@ public class helloworldTest {
         helloworld.sayhello("yang");
     }
 
+    @Test
+    public void testMain(){
+
+    }
 }

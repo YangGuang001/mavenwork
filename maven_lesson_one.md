@@ -94,3 +94,28 @@ build的子元素testResources 表示开启资源过滤
 name 字段在聚合模块中表示是自己的名称。
 ## 继承
 dependencyManagement 即可以让子模块继承父模块的依赖配置，保证子模块的灵活配置，又不让模块引入实际的依赖   
+
+# maven-surefire-plugin 测试插件
+* mvn test默认会执行以下这组模式的类：
+> ***/Test*.java:任何子目录下所有有命名以Test开头的类。
+> ***/*Test.java:任何子目录下所有命名以Test结尾的类。
+> ***/*TestCase.java:任何子目录下所有命名以TestCase结尾的类。   
+只要按照上述的命名方式，maven test都会执行到。
+* 添加includes测试类和排除excludes测试类
+* cobertura-maven-plugin 可以或侧测试类覆盖率报告
+* TestNG和Junit的优缺点以及和maven-surefire-plugin的配合使用
+主代码和测试代码都打包：
+```xml
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>2.2</version>
+    <executions>
+        <execution>
+            <goals>
+                <goal>test-jar</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+```
