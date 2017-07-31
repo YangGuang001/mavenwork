@@ -9,7 +9,7 @@ clean 是clean插件提供的， compile是compiler提供的。
 * mvn插件有clean，resources，compile，testResources，testCompile等。  
 * testCompile执行编译任务，放到target/test-classes目录下，紧接着surefile：test负责执行测试，surefile是maven中负责执行测试用例的插件   
 * mvn的compile、test、package、install依次执行，install必须执行前面的步骤
-
+* 每一个插件都有一个或者多个目的。
 * mvn 打包的插件有不同maven包jar：maven-jar-plugin， maven包war：maven-jar-plugin，可执行的包：maven-shade-plugin，自定义打包：maven-assembly-plugin   
 * 带有标签orginal为原生包，可以作为被引用的包
 ## 项目中的配置选项  
@@ -119,3 +119,19 @@ dependencyManagement 即可以让子模块继承父模块的依赖配置，保�
     </executions>
 </plugin>
 ```
+
+# webapp打包盒jetty-maven-plugin进行测试
+在setting.xml中天pluginGroup标签可以把非maven官方的插件安装到maven插件中，从而可以使用mvn jetty:run的方式运行   
+
+
+# maven常用插件总结
+* maven-dependency-plugin主要目的将依赖的包输出到执行的目录。
+* maven-antrun-plugin能让用户在Maven项目中运行Ant任务
+* maven-archetype-plugin生成项目骨架，也可以自定项目骨架demo，交给别人使用
+* maven-assembly-plugin的用途是制作项目分发包，该分发包可能包含了项目的可执行文件、源代码、readme、平台脚本等等。流的格式如zip、tar.gz、jar和war等
+* maven-dependency-plugin用途是帮助分析项目依赖dependency:list能够列出项目最终解析到的依赖列表dependency:tree能进一步的描绘项目依赖树dependency:analyze可以告诉你项目依赖潜在的问题
+* 编译时期的maven-compile-plugin，内置插件，主要作用编译代码，限制java版本。
+* 执行代码exec-maven-plugin，主要作用通过配置直接运行编译出的代码直接可以运行。
+* maven-resources-plugin添加额外的资源文件目录
+* maven-jar-plugin 可以对test代码进行打包
+* jetty-maven-plugin可以启动jetty容器进行测试。 
